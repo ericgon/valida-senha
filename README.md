@@ -40,14 +40,14 @@ Acesse a API: A aplicação estará disponível em http://localhost:8080.
 Via cURL
 Bash
 
-curl -X POST http://localhost:8080/api/v1/senha/validar \
+curl -X POST http://localhost:8080/v1/passwords/validate \
 -H "Content-Type: application/json" \
 -d '{"password": "AbTp9!fok"}'
 Via Testes Automatizados
-O projeto conta com cobertura de testes unitários para cada regra e testes de integração para o endpoint.
+O projeto conta com cobertura de testes unitários para cada regra e testes de integração.
 
 ##  API Documentation
-Endpoint: POST /api/v1/password/validate
+Endpoint: POST /v1/passwords/validate
 Recebe uma senha e retorna um booleano.
 
 Payload:
@@ -58,6 +58,9 @@ JSON
 "password": "SenhaValida1!"
 }
 Resposta: true (ou false caso não atenda aos critérios).
+
+## Arquitetura
+
 
 Contato
 Dúvidas ou sugestões? Entre em contato:

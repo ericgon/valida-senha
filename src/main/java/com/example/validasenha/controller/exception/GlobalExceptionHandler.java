@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
 
     private final MeterRegistry registry;
 
+    //metricas de erros
     public GlobalExceptionHandler(MeterRegistry registry) {
         this.registry = registry;
     }

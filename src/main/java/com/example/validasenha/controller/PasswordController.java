@@ -16,6 +16,7 @@ public class PasswordController {
     private final IPasswordService passwordService;
 
     public PasswordController(IPasswordService passwordService) {
+
         this.passwordService = passwordService;
     }
 
