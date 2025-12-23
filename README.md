@@ -61,6 +61,44 @@ Resposta: true (ou false caso não atenda aos critérios).
 
 ## Arquitetura
 
+O projeto segue uma arquitetura separando claramente as responsabilidades:
+
+- **Controller (Camada de Entrada)**  
+  Responsável por receber requisições HTTP, validar o contrato da API e delegar o processamento para a camada de serviço.
+
+- **Service (Camada de Domínio / Regras de Negócio)**  
+  Contém toda a lógica de validação da senha.  
+  Essa camada é independente de infraestrutura, facilitando testes e futuras evoluções.
+
+Essa separação garante:
+- Código mais organizado
+- Facilidade de manutenção
+- Menor acoplamento entre componentes
+
+---
+
+### 🔹 Princípios de Clean Code e SOLID
+
+- **SRP (Single Responsibility Principle)**  
+  Cada classe possui uma única responsabilidade bem definida.
+
+- **Baixo acoplamento e alta coesão**  
+  A lógica de negócio não depende de detalhes da camada web.
+
+- **Código legível e direto**  
+  A validação foi implementada de forma clara, evitando complexidade desnecessária.
+
+---
+
+### 🔹 KISS e YAGNI
+
+O projeto foi desenvolvido seguindo os princípios:
+
+- **KISS (Keep It Simple, Stupid)**  
+  A solução resolve exatamente o problema proposto, sem abstrações excessivas.
+
+- **YAGNI (You Aren’t Gonna Need It)**  
+  Não foram adicionadas funcionalidades, frameworks ou camadas que não fossem necessárias neste momento.
 
 
 Contato
