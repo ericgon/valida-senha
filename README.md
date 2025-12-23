@@ -62,6 +62,7 @@ Resposta: true (ou false caso não atenda aos critérios).
 ## Arquitetura
 
 
+
 Contato
 Dúvidas ou sugestões? Entre em contato:
 
