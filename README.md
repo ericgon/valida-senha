@@ -39,7 +39,7 @@ Acesse a API: A aplicação estará disponível em http://localhost:8080.
 ##  Testando a API
 Via cURL
 Bash
-
+ 
 curl -X POST http://localhost:8080/v1/passwords/validate \
 -H "Content-Type: application/json" \
 -d '{"password": "AbTp9!fok"}'
