@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.regex.Pattern;
 
 @Component
-public class CharacterTypeRule implements ValidatePasswordRule {
+public class CharacterTypeRule implements IValidatePasswordRule {
 
     // Regex para: !@#$%^&*()-+
     private static final Pattern SPECIAL_CHAR = Pattern.compile(".*[!@#$%^&*()\\-+].*");

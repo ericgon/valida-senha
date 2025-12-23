@@ -1,5 +1,5 @@
 package com.example.validasenha.domain.rules;
 
-public interface ValidatePasswordRule {
+public interface IValidatePasswordRule {
     boolean isValid(String password);
 }

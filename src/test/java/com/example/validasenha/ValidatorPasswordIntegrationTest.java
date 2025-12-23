@@ -8,8 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -24,11 +23,39 @@ class ValidatorPasswordIntegrationTest {
                 { "password": "AbTp9!fok" }
                 """;
 
-        mockMvc.perform(post("/api/v1/senha/validar")
+        mockMvc.perform(post("/v1/passwords/validate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonBody))
                 .andExpect(status().isOk())
                 .andExpect(content().string("true"));
+    }
+
+    @Test
+    void shouldRejectInvalidPassword_empty() throws Exception {
+        String jsonBody = """
+                { "password": "" }
+                """;
+
+        mockMvc.perform(post("/v1/passwords/validate")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonBody))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").value("Senha não pode ser nulla ou vazia"));
+    }
+
+    @Test
+    void shouldRejectInvalidPassword_null() throws Exception {
+        String jsonBody = """
+                { "password": null }
+                """;
+
+        mockMvc.perform(post("/v1/passwords/validate")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonBody))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.error").value("Senha não pode ser nulla ou vazia"));
     }
 
     @Test
@@ -37,7 +64,7 @@ class ValidatorPasswordIntegrationTest {
                 { "password": "AbTp9!foo" }
                 """;
 
-        mockMvc.perform(post("/api/v1/senha/validar")
+        mockMvc.perform(post("/v1/passwords/validate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonBody))
                 .andExpect(status().isOk())
@@ -50,7 +77,7 @@ class ValidatorPasswordIntegrationTest {
                 { "password": "Ab Tp9!fok" }
                 """;
 
-        mockMvc.perform(post("/api/v1/senha/validar")
+        mockMvc.perform(post("/v1/passwords/validate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonBody))
                 .andExpect(status().isOk())
@@ -63,7 +90,7 @@ class ValidatorPasswordIntegrationTest {
                 { "password": "Ap9!f" }
                 """;
 
-        mockMvc.perform(post("/api/v1/senha/validar")
+        mockMvc.perform(post("/v1/passwords/validate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonBody))
                 .andExpect(status().isOk())
@@ -76,7 +103,7 @@ class ValidatorPasswordIntegrationTest {
                 { "password": "abtp9!fok" }
                 """;
 
-        mockMvc.perform(post("/api/v1/senha/validar")
+        mockMvc.perform(post("/v1/passwords/validate")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonBody))
                 .andExpect(status().isOk())
